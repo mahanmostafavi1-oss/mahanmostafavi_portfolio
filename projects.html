@@ -12,58 +12,55 @@
 </head>
 <body>
 
-  <nav>
-    <ul class="nav-links">
-      <li><a href="about.html">About</a></li>
-      <li><a href="writing.html">Writing</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="other.html">Other</a></li>
-    </ul>
-  </nav>
+  <div class="inner-layout">
+    <aside class="sidebar">
+      <a href="index.html" class="sidebar-home">Mahan<br>Mostafavi</a>
+      <ul class="sidebar-nav">
+        <li><a href="about.html">About</a></li>
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="other.html">Other</a></li>
+      </ul>
+    </aside>
 
-  <main class="page">
-    <p class="section-eyebrow">Projects</p>
-    <h1 class="section-title">Work &amp; Builds</h1>
-    <p class="section-intro">Coding projects, research presentations, and initiatives I've contributed to.</p>
+    <main class="inner-content">
+      <p class="section-eyebrow">Projects</p>
+      <h1 class="section-title">Work &amp; Builds</h1>
+      <p class="section-intro">Coding projects, research presentations, and initiatives I've contributed to.</p>
 
-    <div class="projects-grid">
+      <div class="projects-grid">
 
-      <!-- Add new projects by copying a .project-card block below -->
+        <div class="project-card">
+          <div class="project-type">Web / Game</div>
+          <div class="project-name">Soccer Stats Higher or Lower</div>
+          <div class="project-desc">A higher-or-lower web game built around player statistics. Uses a SQLite database populated with Kaggle datasets, built with VS Code and designed in Figma.</div>
+          <a href="#" class="project-link" target="_blank" rel="noopener">View project →</a>
+        </div>
 
-      <div class="project-card">
-        <div class="project-type">Web / Game</div>
-        <div class="project-name">Soccer Stats Higher or Lower</div>
-        <div class="project-desc">A higher-or-lower web game built around player statistics. Uses a SQLite database populated with Kaggle datasets, built with VS Code and designed in Figma.</div>
-        <a href="#" class="project-link" target="_blank" rel="noopener">View project →</a>
+        <div class="project-card">
+          <div class="project-type">Research / Poster</div>
+          <div class="project-name">IRF5 &amp; Bone Remodeling</div>
+          <div class="project-desc">Visiting Research Scholar work at the Feinstein Institutes. Investigated IRF5 regulation in bone remodeling using mouse models, PCR, electroporation, and isothermal assembly.</div>
+          <a href="#" class="project-link" target="_blank" rel="noopener">View poster →</a>
+        </div>
+
+        <div class="project-card">
+          <div class="project-type">Initiative</div>
+          <div class="project-name">The Diane Fund</div>
+          <div class="project-desc">Co-founded a fundraising initiative that raised over $150K and coordinated 50+ volunteers. Managed outreach, logistics, and donor communications.</div>
+          <a href="#" class="project-link" target="_blank" rel="noopener">Learn more →</a>
+        </div>
+
+        <div class="project-card">
+          <div class="project-type">Add your next project</div>
+          <div class="project-name">Project Title</div>
+          <div class="project-desc">Brief description of what the project is, what it does, and any tools or methods involved. 2–3 sentences is ideal.</div>
+          <a href="#" class="project-link" target="_blank" rel="noopener">Link →</a>
+        </div>
+
       </div>
-
-      <div class="project-card">
-        <div class="project-type">Research / Poster</div>
-        <div class="project-name">IRF5 &amp; Bone Remodeling</div>
-        <div class="project-desc">Visiting Research Scholar work at the Feinstein Institutes. Investigated IRF5 regulation in bone remodeling using mouse models, PCR, electroporation, and isothermal assembly.</div>
-        <a href="#" class="project-link" target="_blank" rel="noopener">View poster →</a>
-      </div>
-
-      <div class="project-card">
-        <div class="project-type">Initiative</div>
-        <div class="project-name">The Diane Fund</div>
-        <div class="project-desc">Co-founded a fundraising initiative that raised over $150K and coordinated 50+ volunteers. Managed outreach, logistics, and donor communications.</div>
-        <a href="#" class="project-link" target="_blank" rel="noopener">Learn more →</a>
-      </div>
-
-      <div class="project-card">
-        <div class="project-type">Add your next project</div>
-        <div class="project-name">Project Title</div>
-        <div class="project-desc">Brief description of what the project is, what it does, and any tools or methods involved. 2–3 sentences is ideal.</div>
-        <a href="#" class="project-link" target="_blank" rel="noopener">Link →</a>
-      </div>
-
-    </div>
-  </main>
-
-  <footer>
-    &copy; 2026 Mahan Mostafavi
-  </footer>
+    </main>
+  </div>
 
 </body>
 </html>

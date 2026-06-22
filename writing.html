@@ -12,49 +12,45 @@
 </head>
 <body>
 
-  <nav>
-    <ul class="nav-links">
-      <li><a href="about.html">About</a></li>
-      <li><a href="writing.html">Writing</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="other.html">Other</a></li>
-    </ul>
-  </nav>
+  <div class="inner-layout">
+    <aside class="sidebar">
+      <a href="index.html" class="sidebar-home">Mahan<br>Mostafavi</a>
+      <ul class="sidebar-nav">
+        <li><a href="about.html">About</a></li>
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="other.html">Other</a></li>
+      </ul>
+    </aside>
 
-  <main class="page">
-    <p class="section-eyebrow">Writing</p>
-    <h1 class="section-title">Papers &amp; Research</h1>
-    <p class="section-intro">Academic work spanning development economics, biology, and policy. PDFs linked where available.</p>
+    <main class="inner-content">
+      <p class="section-eyebrow">Writing</p>
+      <h1 class="section-title">Papers &amp; Research</h1>
+      <p class="section-intro">Academic work spanning development economics, biology, and policy. PDFs linked where available.</p>
 
-    <ul class="writing-list">
+      <ul class="writing-list">
 
-      <!-- Add papers below. To add a new one, copy one <li> block and update the fields. -->
-      <!-- For PDF: upload the file to a /pdfs/ folder in your repo and set href="pdfs/yourfile.pdf" -->
+        <li class="writing-item">
+          <div class="writing-meta">
+            <div class="writing-title">Haiti Country Report: Development, Institutions, and Human Capital</div>
+            <div class="writing-desc">An analysis of Haiti's development trajectory through the lens of Todaro &amp; Smith, Sen's capability approach, and the Harrod-Domar model. Examines structural barriers to growth, aid dependency, and policy recommendations.</div>
+            <a class="writing-link" href="pdfs/haiti-country-report.pdf" target="_blank">View PDF →</a>
+          </div>
+          <span class="writing-tag">Dev. Economics</span>
+        </li>
 
-      <li class="writing-item">
-        <div class="writing-meta">
-          <div class="writing-title">Haiti Country Report: Development, Institutions, and Human Capital</div>
-          <div class="writing-desc">An analysis of Haiti's development trajectory through the lens of Todaro &amp; Smith, Sen's capability approach, and the Harrod-Domar model. Examines structural barriers to growth, aid dependency, and policy recommendations.</div>
-          <a class="writing-link" href="pdfs/haiti-country-report.pdf" target="_blank">View PDF →</a>
-        </div>
-        <span class="writing-tag">Dev. Economics</span>
-      </li>
+        <li class="writing-item">
+          <div class="writing-meta">
+            <div class="writing-title">Your Next Paper Title Here</div>
+            <div class="writing-desc">A short description of the paper — its topic, argument, and context. Keep it to 2–3 sentences.</div>
+            <a class="writing-link" href="pdfs/placeholder.pdf" target="_blank">View PDF →</a>
+          </div>
+          <span class="writing-tag">Course / Field</span>
+        </li>
 
-      <li class="writing-item">
-        <div class="writing-meta">
-          <div class="writing-title">Your Next Paper Title Here</div>
-          <div class="writing-desc">A short description of the paper — its topic, argument, and context. Keep it to 2–3 sentences.</div>
-          <a class="writing-link" href="pdfs/placeholder.pdf" target="_blank">View PDF →</a>
-        </div>
-        <span class="writing-tag">Course / Field</span>
-      </li>
-
-    </ul>
-  </main>
-
-  <footer>
-    &copy; 2026 Mahan Mostafavi
-  </footer>
+      </ul>
+    </main>
+  </div>
 
 </body>
 </html>
