@@ -13,23 +13,29 @@
     .carousel-wrap {
       position: relative;
       width: 100%;
+      max-width: 100%;
       user-select: none;
+      overflow: hidden;
     }
 
     .carousel-track-outer {
       overflow: hidden;
       border-radius: 4px;
+      width: 100%;
+      position: relative;
     }
 
     .carousel-track {
       display: flex;
-      /* transition applied via JS so we can disable it for silent jumps */
+      width: 100%;
+      will-change: transform;
     }
 
     .carousel-slide {
+      width: 100%;
       min-width: 100%;
+      flex: 0 0 100%;
       position: relative;
-      flex-shrink: 0;
     }
 
     .carousel-slide img {
@@ -75,12 +81,12 @@
       color: var(--fg);
       font-size: 1rem;
       transition: border-color 0.2s, color 0.2s;
-      opacity: 0.85;
+      opacity: 0.9;
     }
 
     .carousel-btn:hover { border-color: var(--fg); opacity: 1; }
-    .carousel-btn.prev { left: -20px; }
-    .carousel-btn.next { right: -20px; }
+    .carousel-btn.prev { left: 12px; }
+    .carousel-btn.next { right: 12px; }
 
     .carousel-dots {
       display: flex;
