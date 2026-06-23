@@ -13,8 +13,8 @@
     /* Side-by-side layout: text left, collage right */
     .about-layout {
       display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 40px;
+      grid-template-columns: 0.75fr 1.5fr;
+      gap: 48px;
       align-items: start;
       margin-bottom: 48px;
     }
@@ -36,7 +36,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: auto auto auto;
-      gap: 6px;
+      gap: 7px;
       width: 100%;
     }
 
@@ -55,7 +55,7 @@
 
     .collage-cell-headshot .collage-img {
       height: 100%;
-      min-height: 260px;
+      min-height: 310px;
     }
 
     .collage-cell-top {
@@ -64,7 +64,7 @@
     }
 
     .collage-cell-top .collage-img {
-      height: 160px;
+      height: 190px;
     }
 
     .collage-cell-bottom {
@@ -73,7 +73,7 @@
     }
 
     .collage-cell-bottom .collage-img {
-      height: 145px;
+      height: 175px;
     }
 
     .collage-cell-wide {
@@ -82,7 +82,7 @@
     }
 
     .collage-cell-wide .collage-img {
-      height: 180px;
+      height: 210px;
       object-position: center 40%;
     }
 
@@ -139,19 +139,22 @@
 
     .collage-hover-wrap {
       position: relative;
-      overflow: hidden;
     }
 
+    /* Label sits outside the image, to the right */
     .collage-hover-label {
       position: absolute;
-      bottom: 12px;
-      left: 12px;
+      top: 50%;
+      left: 100%;
+      transform: translateY(-50%);
       display: flex;
       align-items: center;
       gap: 0;
       opacity: 0;
       transition: opacity 0.3s ease;
       pointer-events: none;
+      z-index: 20;
+      padding-left: 0;
     }
 
     .collage-hover-wrap:hover .collage-hover-label {
@@ -162,7 +165,7 @@
       display: block;
       width: 0;
       height: 1px;
-      background: #ffffff;
+      background: var(--fg-muted);
       transition: width 0.35s ease;
       position: relative;
     }
@@ -176,21 +179,21 @@
       width: 5px;
       height: 5px;
       border-radius: 50%;
-      background: #ffffff;
+      background: var(--fg-muted);
     }
 
     .collage-hover-wrap:hover .collage-hover-line {
-      width: 28px;
+      width: 24px;
     }
 
     .collage-hover-text {
-      font-size: 0.75rem;
-      color: #ffffff;
+      font-size: 0.72rem;
+      color: var(--fg-muted);
       letter-spacing: 0.04em;
       white-space: nowrap;
       opacity: 0;
       transform: translateX(-6px);
-      transition: opacity 0.25s ease 0.25s, transform 0.25s ease 0.25s;
+      transition: opacity 0.25s ease 0.2s, transform 0.25s ease 0.2s;
       margin-left: 8px;
     }
 
