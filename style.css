@@ -278,6 +278,7 @@ img { display: block; max-width: 100%; }
 .collage {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 160px 160px 220px;
   gap: 6px;
   width: 100%;
   max-width: 560px;
@@ -291,13 +292,13 @@ img { display: block; max-width: 100%; }
 }
 
 .collage-cell-headshot { grid-column: 1; grid-row: 1 / 3; }
-.collage-cell-headshot .collage-img { height: 100%; min-height: 280px; }
+.collage-cell-headshot .collage-img { height: 100%; }
 .collage-cell-top { grid-column: 2; grid-row: 1; }
-.collage-cell-top .collage-img { height: 160px; }
+.collage-cell-top .collage-img { height: 100%; object-position: center top; }
 .collage-cell-bottom { grid-column: 2; grid-row: 2; }
-.collage-cell-bottom .collage-img { height: 148px; }
+.collage-cell-bottom .collage-img { height: 100%; }
 .collage-cell-wide { grid-column: 1 / 3; grid-row: 3; }
-.collage-cell-wide .collage-img { height: 180px; object-position: center 40%; }
+.collage-cell-wide .collage-img { height: 100%; object-position: center 40%; }
 
 .collage-hover-wrap { position: relative; }
 
@@ -891,11 +892,8 @@ footer {
 
   .about-layout { grid-template-columns: 1fr; gap: 24px; }
   .about-bio { max-width: 100%; }
-  .collage { max-width: 100%; grid-template-columns: 1fr 1fr; }
-  .collage-cell-headshot .collage-img,
-  .collage-cell-top .collage-img,
-  .collage-cell-bottom .collage-img { height: 160px; }
-  .collage-cell-wide .collage-img { height: 140px; }
+  .collage { max-width: 100%; grid-template-columns: 1fr 1fr; grid-template-rows: 130px 130px 180px; }
+  .collage-cell-wide .collage-img { height: 100%; }
 
   .img-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; max-width: 100%; }
   .projects-grid { grid-template-columns: 1fr; max-width: 100%; }
