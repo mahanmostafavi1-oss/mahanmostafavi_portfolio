@@ -10,7 +10,7 @@
   --accent:       #8A7968;
   --accent-light: rgba(138,121,104,0.12);
   --border:       #D4D4CE;
-  --sidebar-w:    220px;
+  --sidebar-w:    160px;
   --radius:       4px;
   --transition:   0.2s ease;
 }
@@ -117,15 +117,16 @@ img { display: block; max-width: 100%; }
 .sidebar {
   width: var(--sidebar-w);
   flex-shrink: 0;
-  padding: 48px 32px 48px 40px;
+  padding: 48px 24px 48px 24px;
   position: fixed;
   top: 0;
   left: 0;
   height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   gap: 36px;
-  border-right: 1px solid var(--border);
+  border-right: none;
   background: var(--bg);
   z-index: 100;
 }
@@ -212,7 +213,7 @@ img { display: block; max-width: 100%; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 100px 96px 140px;
+  padding: 60px 96px 140px;
 }
 
 .inner-content > * {
@@ -872,7 +873,7 @@ footer {
    RESPONSIVE — TABLET
 ══════════════════════════════════════ */
 @media (max-width: 900px) {
-  :root { --sidebar-w: 180px; }
+  :root { --sidebar-w: 140px; }
   .inner-content { padding: 88px 56px 120px; }
 }
 
