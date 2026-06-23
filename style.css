@@ -348,6 +348,39 @@ footer {
   border-top: 1px solid var(--border);
 }
 
+
+/* ── Sidebar dropdown ── */
+.sidebar-dropdown { position: relative; }
+
+.sidebar-submenu {
+  list-style: none;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease, opacity 0.2s ease;
+  opacity: 0;
+  padding-left: 12px;
+  margin-top: 0;
+}
+
+.sidebar-dropdown:hover .sidebar-submenu,
+.sidebar-dropdown:focus-within .sidebar-submenu {
+  max-height: 200px;
+  opacity: 1;
+  margin-top: 8px;
+}
+
+.sidebar-submenu li { margin-bottom: 8px; }
+
+.sidebar-submenu a {
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  transition: color 0.2s;
+}
+
+.sidebar-submenu a:hover { color: var(--fg); }
+
 /* ── Mobile ── */
 @media (max-width: 600px) {
   .sidebar {

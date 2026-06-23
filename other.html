@@ -10,35 +10,16 @@
   <link rel="stylesheet" href="style.css" />
   <script src="main.js" defer></script>
   <style>
-    /* ── Grid layouts for visual sections ── */
-    .img-grid-books {
+    .img-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .img-grid-frag {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
       gap: 16px;
-    }
-
-    .img-grid-travel {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-    }
-
-    .img-grid-shows {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 10px;
     }
 
     .img-card {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 7px;
     }
 
     .img-card img {
@@ -50,28 +31,25 @@
       background: var(--border);
     }
 
-    .img-grid-travel .img-card img {
+    .img-grid.travel .img-card img {
       aspect-ratio: 4/3;
     }
 
-    .img-grid-frag .img-card img {
+    .img-grid.frag .img-card img {
       aspect-ratio: 3/4;
       object-fit: contain;
       background: transparent;
     }
 
     .img-card-label {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--fg-muted);
       text-align: center;
       line-height: 1.3;
     }
 
-    @media (max-width: 700px) {
-      .img-grid-books { grid-template-columns: repeat(3, 1fr); }
-      .img-grid-frag  { grid-template-columns: repeat(3, 1fr); }
-      .img-grid-travel { grid-template-columns: repeat(2, 1fr); }
-      .img-grid-shows  { grid-template-columns: repeat(3, 1fr); }
+    @media (max-width: 600px) {
+      .img-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -84,19 +62,27 @@
         <li><a href="about.html">About</a></li>
         <li><a href="writing.html">Writing</a></li>
         <li><a href="projects.html">Projects</a></li>
-        <li><a href="other.html">Other</a></li>
+        <li class="sidebar-dropdown">
+          <a href="other.html" class="sidebar-dropdown-toggle">Other</a>
+          <ul class="sidebar-submenu">
+            <li><a href="#books">Books</a></li>
+            <li><a href="#fragrances">Fragrances</a></li>
+            <li><a href="#places">Places</a></li>
+            <li><a href="#shows">Shows</a></li>
+          </ul>
+        </li>
       </ul>
     </aside>
 
     <main class="inner-content">
       <p class="section-eyebrow">Other</p>
       <h1 class="section-title">Outside the Work</h1>
-      <p class="section-intro">Things I read, wear, watch, visit, and think about.</p>
+      <p class="section-intro">Things I read, wear, watch, and visit.</p>
 
       <!-- BOOKS -->
-      <div class="other-block">
+      <div class="other-block" id="books">
         <div class="other-block-title">Books</div>
-        <div class="img-grid-books">
+        <div class="img-grid">
           <div class="img-card">
             <img src="images/books/hour-between-dog-wolf.jpg" alt="The Hour Between Dog and Wolf" />
             <div class="img-card-label">The Hour Between Dog and Wolf — John Coates</div>
@@ -113,9 +99,9 @@
       </div>
 
       <!-- FRAGRANCES -->
-      <div class="other-block">
+      <div class="other-block" id="fragrances">
         <div class="other-block-title">Fragrances</div>
-        <div class="img-grid-frag">
+        <div class="img-grid frag">
           <div class="img-card">
             <img src="images/fragrances/acqua-dell-elba.jpg" alt="Acqua dell'Elba Classica" />
             <div class="img-card-label">Acqua dell'Elba Classica</div>
@@ -140,72 +126,72 @@
       </div>
 
       <!-- TRAVEL -->
-      <div class="other-block">
+      <div class="other-block" id="places">
         <div class="other-block-title">Places</div>
-        <div class="img-grid-travel">
+        <div class="img-grid travel">
           <div class="img-card">
-            <img src="images/travel/Barcelona__Spain.jpg" alt="Barcelona, Spain" />
+            <img src="images/travel/Barcelona__Spain.jpg" alt="Barcelona" />
             <div class="img-card-label">Barcelona</div>
           </div>
           <div class="img-card">
-            <img src="images/travel/Budapest__Hungary.jpg" alt="Budapest, Hungary" />
+            <img src="images/travel/Budapest__Hungary.jpg" alt="Budapest" />
             <div class="img-card-label">Budapest</div>
           </div>
           <div class="img-card">
-            <img src="images/travel/Copenhagen__Denmark.jpg" alt="Copenhagen, Denmark" />
+            <img src="images/travel/Copenhagen__Denmark.jpg" alt="Copenhagen" />
             <div class="img-card-label">Copenhagen</div>
           </div>
           <div class="img-card">
-            <img src="images/travel/Florence__Italy.jpg" alt="Florence, Italy" />
+            <img src="images/travel/Florence__Italy.jpg" alt="Florence" />
             <div class="img-card-label">Florence</div>
           </div>
           <div class="img-card">
-            <img src="images/travel/Genoa_Nervi__Italy.jpg" alt="Genoa Nervi, Italy" />
+            <img src="images/travel/Genoa_Nervi__Italy.jpg" alt="Genoa Nervi" />
             <div class="img-card-label">Genoa Nervi</div>
           </div>
           <div class="img-card">
-            <img src="images/travel/Grasse__France.jpg" alt="Grasse, France" />
+            <img src="images/travel/Grasse__France.jpg" alt="Grasse" />
             <div class="img-card-label">Grasse</div>
           </div>
           <div class="img-card">
-            <img src="images/travel/Gstaad__Switzerland.jpg" alt="Gstaad, Switzerland" />
+            <img src="images/travel/Gstaad__Switzerland.jpg" alt="Gstaad" />
             <div class="img-card-label">Gstaad</div>
           </div>
           <div class="img-card">
-            <img src="images/travel/Milan__Italy.jpg" alt="Milan, Italy" />
+            <img src="images/travel/Milan__Italy.jpg" alt="Milan" />
             <div class="img-card-label">Milan</div>
           </div>
           <div class="img-card">
-            <img src="images/travel/Mougin__France.jpg" alt="Mougins, France" />
+            <img src="images/travel/Mougin__France.jpg" alt="Mougins" />
             <div class="img-card-label">Mougins</div>
           </div>
           <div class="img-card">
-            <img src="images/travel/Rome__Italy.jpg" alt="Rome, Italy" />
+            <img src="images/travel/Rome__Italy.jpg" alt="Rome" />
             <div class="img-card-label">Rome</div>
           </div>
           <div class="img-card">
-            <img src="images/travel/San_Juan__Puerto_Rico.jpg" alt="San Juan, Puerto Rico" />
+            <img src="images/travel/San_Juan__Puerto_Rico.jpg" alt="San Juan" />
             <div class="img-card-label">San Juan</div>
           </div>
           <div class="img-card">
-            <img src="images/travel/Split__Croatia.jpg" alt="Split, Croatia" />
+            <img src="images/travel/Split__Croatia.jpg" alt="Split" />
             <div class="img-card-label">Split</div>
           </div>
           <div class="img-card">
-            <img src="images/travel/Tehran__Iran.jpg" alt="Tehran, Iran" />
+            <img src="images/travel/Tehran__Iran.jpg" alt="Tehran" />
             <div class="img-card-label">Tehran</div>
           </div>
           <div class="img-card">
-            <img src="images/travel/Vienna__Austria.jpg" alt="Vienna, Austria" />
+            <img src="images/travel/Vienna__Austria.jpg" alt="Vienna" />
             <div class="img-card-label">Vienna</div>
           </div>
         </div>
       </div>
 
-      <!-- TV SHOWS -->
-      <div class="other-block">
+      <!-- SHOWS -->
+      <div class="other-block" id="shows">
         <div class="other-block-title">Shows</div>
-        <div class="img-grid-shows">
+        <div class="img-grid">
           <div class="img-card">
             <img src="images/shows/sopranos.jpg" alt="The Sopranos" />
             <div class="img-card-label">The Sopranos</div>
@@ -279,36 +265,6 @@
             <div class="img-card-label">The Punisher</div>
           </div>
         </div>
-      </div>
-
-      <!-- CHESS -->
-      <div class="other-block">
-        <div class="other-block-title">Chess</div>
-        <ul class="other-items">
-          <li class="other-item">
-            <span>Vice President, Lehigh Chess Club</span>
-            <span class="other-item-note">Competitive player</span>
-          </li>
-          <li class="other-item">
-            <span>Add your thoughts on chess here</span>
-            <span class="other-item-note">Openings, style, favorite players</span>
-          </li>
-        </ul>
-      </div>
-
-      <!-- IDEAS -->
-      <div class="other-block">
-        <div class="other-block-title">Ideas &amp; Frameworks</div>
-        <ul class="other-items">
-          <li class="other-item">
-            <span>Sen's Capability Approach</span>
-            <span class="other-item-note">Development as freedom, not just income</span>
-          </li>
-          <li class="other-item">
-            <span>Add an idea or framework</span>
-            <span class="other-item-note">Why it resonates with you</span>
-          </li>
-        </ul>
       </div>
 
     </main>
