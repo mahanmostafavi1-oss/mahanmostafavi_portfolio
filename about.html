@@ -10,22 +10,34 @@
   <link rel="stylesheet" href="style.css" />
   <script src="main.js" defer></script>
   <style>
-    .about-bio {
-      font-size: 1rem;
-      line-height: 1.8;
-      color: var(--fg);
+    /* Side-by-side layout: text left, collage right */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 40px;
+      align-items: start;
       margin-bottom: 48px;
-      max-width: 580px;
+    }
+
+    .about-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .about-bio {
+      font-size: 1.15rem;
+      line-height: 1.85;
+      color: var(--fg);
     }
 
     /* Collage grid */
     .collage {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto auto;
-      gap: 8px;
+      grid-template-rows: auto auto auto;
+      gap: 6px;
       width: 100%;
-      margin-bottom: 48px;
     }
 
     .collage-img {
@@ -36,7 +48,6 @@
       border-radius: 3px;
     }
 
-    /* Headshot spans full left column */
     .collage-cell-headshot {
       grid-column: 1;
       grid-row: 1 / 3;
@@ -44,41 +55,41 @@
 
     .collage-cell-headshot .collage-img {
       height: 100%;
-      min-height: 320px;
+      min-height: 260px;
     }
 
-    /* Top-right */
     .collage-cell-top {
       grid-column: 2;
       grid-row: 1;
     }
 
     .collage-cell-top .collage-img {
-      height: 200px;
+      height: 160px;
     }
 
-    /* Bottom-right spans two columns */
     .collage-cell-bottom {
       grid-column: 2;
       grid-row: 2;
     }
 
     .collage-cell-bottom .collage-img {
-      height: 180px;
+      height: 145px;
     }
 
-    /* Wide bottom — wakeboard goes full width */
     .collage-cell-wide {
       grid-column: 1 / 3;
       grid-row: 3;
     }
 
     .collage-cell-wide .collage-img {
-      height: 220px;
+      height: 180px;
       object-position: center 40%;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 700px) {
+      .about-layout {
+        grid-template-columns: 1fr;
+      }
       .collage {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
@@ -94,7 +105,7 @@
       .collage-cell-top .collage-img,
       .collage-cell-bottom .collage-img,
       .collage-cell-wide .collage-img {
-        height: 240px;
+        height: 220px;
       }
     }
     .connect-row {
@@ -125,6 +136,69 @@
 
     .connect-linkedin:hover { color: var(--fg); }
 
+
+    .collage-hover-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .collage-hover-label {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .collage-hover-wrap:hover .collage-hover-label {
+      opacity: 1;
+    }
+
+    .collage-hover-line {
+      display: block;
+      width: 0;
+      height: 1px;
+      background: #ffffff;
+      transition: width 0.35s ease;
+      position: relative;
+    }
+
+    .collage-hover-line::after {
+      content: '';
+      position: absolute;
+      right: -3px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #ffffff;
+    }
+
+    .collage-hover-wrap:hover .collage-hover-line {
+      width: 28px;
+    }
+
+    .collage-hover-text {
+      font-size: 0.75rem;
+      color: #ffffff;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateX(-6px);
+      transition: opacity 0.25s ease 0.25s, transform 0.25s ease 0.25s;
+      margin-left: 8px;
+    }
+
+    .collage-hover-wrap:hover .collage-hover-text {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
   </style>
 </head>
 <body>
@@ -150,20 +224,32 @@
     <main class="inner-content">
       <p class="section-eyebrow">About</p>
 
-      <p class="about-bio">I'm Mahan Mostafavi, a 5th Year student at Lehigh University, from Long Island, majoring in Biology and Economics, with a minor in Business.<br><br>My goal with this portfolio is to document some things that I am proud of and highlight my interests and hobbies.</p>
+      <div class="about-layout">
+        <div class="about-text">
+          <p class="about-bio">I'm Mahan Mostafavi, a 5th Year student at Lehigh University, from Long Island, majoring in Biology and Economics, with a minor in Business.<br><br>My goal with this portfolio is to document some things that I am proud of and highlight my interests and hobbies.</p>
+        </div>
 
-      <div class="collage">
-        <div class="collage-cell-headshot">
-          <img class="collage-img" src="images/about-headshot.jpg" alt="Mahan Mostafavi" />
-        </div>
-        <div class="collage-cell-top">
-          <img class="collage-img" src="images/about-speaking.jpg" alt="Speaking" />
-        </div>
-        <div class="collage-cell-bottom">
-          <img class="collage-img" src="images/about-graduation.jpg" alt="Graduation" />
-        </div>
-        <div class="collage-cell-wide">
-          <img class="collage-img" src="images/about-wakeboard.jpg" alt="Wakeboarding" />
+        <div class="collage">
+          <div class="collage-cell-headshot">
+            <img class="collage-img" src="images/about-headshot.jpg" alt="Mahan Mostafavi" />
+          </div>
+          <div class="collage-cell-top collage-hover-wrap">
+            <img class="collage-img" src="images/about-speaking.jpg" alt="Speaking" />
+            <div class="collage-hover-label">
+              <span class="collage-hover-line"></span>
+              <span class="collage-hover-text">Modern Gentleman - The Gentleman's Table</span>
+            </div>
+          </div>
+          <div class="collage-cell-bottom collage-hover-wrap">
+            <img class="collage-img" src="images/about-graduation.jpg" alt="Graduation" />
+            <div class="collage-hover-label">
+              <span class="collage-hover-line"></span>
+              <span class="collage-hover-text">Senior ring ceremony speech</span>
+            </div>
+          </div>
+          <div class="collage-cell-wide">
+            <img class="collage-img" src="images/about-wakeboard.jpg" alt="Wakeboarding" />
+          </div>
         </div>
       </div>
 

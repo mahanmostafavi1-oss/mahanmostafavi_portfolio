@@ -9,6 +9,67 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <script src="main.js" defer></script>
+  <style>
+    .writing-item {
+      border-top: 1px solid var(--border);
+      padding: 0;
+    }
+
+    .writing-item:last-child {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .writing-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .writing-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.1rem;
+    }
+
+    .writing-toggle {
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--fg-muted);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-left: 24px;
+    }
+
+    .writing-header:hover .writing-toggle {
+      color: var(--fg);
+      border-color: var(--fg);
+    }
+
+    .writing-embed {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .writing-embed.open {
+      max-height: 800px;
+    }
+
+    .writing-embed iframe {
+      width: 100%;
+      height: 720px;
+      border: none;
+      display: block;
+      border-radius: 3px;
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
 <body>
 
@@ -37,32 +98,60 @@
       <ul class="writing-list">
 
         <li class="writing-item">
-          <div class="writing-meta">
+          <div class="writing-header" onclick="togglePDF(this, 'pdfs/good-vs-bad-interpretations.pdf')">
             <div class="writing-title">Good vs. Bad Interpretations</div>
-            <div class="writing-desc">An IB Theory of Knowledge essay examining how to distinguish good from bad interpretations across the arts and natural sciences, using examples from film criticism, civil rights photography, and statistical research.</div>
-            <a class="writing-link" href="pdfs/good-vs-bad-interpretations.pdf" target="_blank">View PDF →</a>
+            <span class="writing-toggle">View PDF →</span>
+          </div>
+          <div class="writing-embed">
+            <iframe title="Good vs. Bad Interpretations"></iframe>
           </div>
         </li>
 
         <li class="writing-item">
-          <div class="writing-meta">
+          <div class="writing-header" onclick="togglePDF(this, 'pdfs/music-and-consumer-behavior.pdf')">
             <div class="writing-title">Music and Consumer Behavior</div>
-            <div class="writing-desc">An extended research paper examining how classical music characteristics — tempo, pitch, cadence, timbre, and texture — influence consumer choice behavior in advertisements, with close analysis of Mozart and Beethoven in car and brand campaigns.</div>
-            <a class="writing-link" href="pdfs/music-and-consumer-behavior.pdf" target="_blank">View PDF →</a>
+            <span class="writing-toggle">View PDF →</span>
+          </div>
+          <div class="writing-embed">
+            <iframe title="Music and Consumer Behavior"></iframe>
           </div>
         </li>
 
         <li class="writing-item">
-          <div class="writing-meta">
+          <div class="writing-header" onclick="togglePDF(this, 'pdfs/political-theology.pdf')">
             <div class="writing-title">Political Theology</div>
-            <div class="writing-desc">A comparative essay on the contrasting approaches to political theology offered by Carl Schmitt, Walter Benjamin, and Jacob Taubes, examined through the lens of sovereignty, eschatology, and negative theology.</div>
-            <a class="writing-link" href="pdfs/political-theology.pdf" target="_blank">View PDF →</a>
+            <span class="writing-toggle">View PDF →</span>
+          </div>
+          <div class="writing-embed">
+            <iframe title="Political Theology"></iframe>
           </div>
         </li>
 
       </ul>
     </main>
   </div>
+
+  <script>
+    function togglePDF(header, pdfPath) {
+      const embed = header.nextElementSibling;
+      const toggle = header.querySelector('.writing-toggle');
+      const iframe = embed.querySelector('iframe');
+      const isOpen = embed.classList.contains('open');
+
+      // Close all others first
+      document.querySelectorAll('.writing-embed.open').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('iframe').src = '';
+        el.previousElementSibling.querySelector('.writing-toggle').textContent = 'View PDF →';
+      });
+
+      if (!isOpen) {
+        iframe.src = pdfPath;
+        embed.classList.add('open');
+        toggle.textContent = 'Close ↑';
+      }
+    }
+  </script>
 
 </body>
 </html>
