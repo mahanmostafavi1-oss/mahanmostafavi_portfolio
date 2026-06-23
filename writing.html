@@ -9,6 +9,53 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <script src="main.js" defer></script>
+  <style>
+    /* Writing page: tighter sidebar so content sits closer */
+    @media (min-width: 661px) {
+      .sidebar { width: 180px; padding: 48px 32px 48px 24px; }
+      .inner-content { margin-left: 180px; padding: 48px 80px 120px 40px; }
+    }
+
+    /* Wider list — spans usable content area */
+    .writing-list { max-width: 760px; }
+
+    /* Dividers between entries */
+    .writing-item { border-top: 1px solid var(--border); }
+    .writing-item:last-child { border-bottom: 1px solid var(--border); }
+
+    /* Taller rows with more breathing room */
+    .writing-header {
+      padding: 32px 0;
+      align-items: center;
+    }
+
+    /* Large prominent serif titles */
+    .writing-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(1.4rem, 2.4vw, 2.1rem);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--fg);
+    }
+
+    /* Small muted secondary action, right-aligned */
+    .writing-toggle {
+      font-size: 0.7rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--fg-muted);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      align-self: center;
+      transition: color var(--transition), border-color var(--transition);
+    }
+
+    .writing-header:hover .writing-title { color: var(--fg-muted); }
+    .writing-header:hover .writing-toggle { color: var(--fg); border-color: var(--fg); }
+  </style>
 </head>
 <body>
 
