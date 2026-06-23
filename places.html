@@ -23,12 +23,13 @@
 
     .carousel-track {
       display: flex;
-      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      /* transition applied via JS so we can disable it for silent jumps */
     }
 
     .carousel-slide {
       min-width: 100%;
       position: relative;
+      flex-shrink: 0;
     }
 
     .carousel-slide img {
@@ -47,6 +48,7 @@
       padding: 48px 24px 20px;
       background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%);
       border-radius: 0 0 4px 4px;
+      pointer-events: none;
     }
 
     .carousel-caption-text {
@@ -56,7 +58,6 @@
       letter-spacing: 0.02em;
     }
 
-    /* Prev / Next buttons */
     .carousel-btn {
       position: absolute;
       top: 50%;
@@ -81,7 +82,6 @@
     .carousel-btn.prev { left: -20px; }
     .carousel-btn.next { right: -20px; }
 
-    /* Dots */
     .carousel-dots {
       display: flex;
       justify-content: center;
@@ -106,7 +106,6 @@
       transform: scale(1.3);
     }
 
-    /* Counter */
     .carousel-counter {
       text-align: center;
       margin-top: 10px;
@@ -150,80 +149,9 @@
       <div class="carousel-wrap">
         <div class="carousel-track-outer">
           <div class="carousel-track" id="track">
-
-            <div class="carousel-slide">
-              <img src="images/travel/Barcelona__Spain.jpg" alt="Barcelona" />
-              <div class="carousel-caption"><div class="carousel-caption-text">Barcelona, Spain</div></div>
-            </div>
-
-            <div class="carousel-slide">
-              <img src="images/travel/Budapest__Hungary.jpg" alt="Budapest" />
-              <div class="carousel-caption"><div class="carousel-caption-text">Budapest, Hungary</div></div>
-            </div>
-
-            <div class="carousel-slide">
-              <img src="images/travel/Copenhagen__Denmark.jpg" alt="Copenhagen" />
-              <div class="carousel-caption"><div class="carousel-caption-text">Copenhagen, Denmark</div></div>
-            </div>
-
-            <div class="carousel-slide">
-              <img src="images/travel/Florence__Italy.jpg" alt="Florence" />
-              <div class="carousel-caption"><div class="carousel-caption-text">Florence, Italy</div></div>
-            </div>
-
-            <div class="carousel-slide">
-              <img src="images/travel/Genoa_Nervi__Italy.jpg" alt="Genoa Nervi" />
-              <div class="carousel-caption"><div class="carousel-caption-text">Genoa Nervi, Italy</div></div>
-            </div>
-
-            <div class="carousel-slide">
-              <img src="images/travel/Grasse__France.jpg" alt="Grasse" />
-              <div class="carousel-caption"><div class="carousel-caption-text">Grasse, France</div></div>
-            </div>
-
-            <div class="carousel-slide">
-              <img src="images/travel/Gstaad__Switzerland.jpg" alt="Gstaad" />
-              <div class="carousel-caption"><div class="carousel-caption-text">Gstaad, Switzerland</div></div>
-            </div>
-
-            <div class="carousel-slide">
-              <img src="images/travel/Milan__Italy.jpg" alt="Milan" />
-              <div class="carousel-caption"><div class="carousel-caption-text">Milan, Italy</div></div>
-            </div>
-
-            <div class="carousel-slide">
-              <img src="images/travel/Mougin__France.jpg" alt="Mougins" />
-              <div class="carousel-caption"><div class="carousel-caption-text">Mougins, France</div></div>
-            </div>
-
-            <div class="carousel-slide">
-              <img src="images/travel/Rome__Italy.jpg" alt="Rome" />
-              <div class="carousel-caption"><div class="carousel-caption-text">Rome, Italy</div></div>
-            </div>
-
-            <div class="carousel-slide">
-              <img src="images/travel/San_Juan__Puerto_Rico.jpg" alt="San Juan" />
-              <div class="carousel-caption"><div class="carousel-caption-text">San Juan, Puerto Rico</div></div>
-            </div>
-
-            <div class="carousel-slide">
-              <img src="images/travel/Split__Croatia.jpg" alt="Split" />
-              <div class="carousel-caption"><div class="carousel-caption-text">Split, Croatia</div></div>
-            </div>
-
-            <div class="carousel-slide">
-              <img src="images/travel/Tehran__Iran.jpg" alt="Tehran" />
-              <div class="carousel-caption"><div class="carousel-caption-text">Tehran, Iran</div></div>
-            </div>
-
-            <div class="carousel-slide">
-              <img src="images/travel/Vienna__Austria.jpg" alt="Vienna" />
-              <div class="carousel-caption"><div class="carousel-caption-text">Vienna, Austria</div></div>
-            </div>
-
+            <!-- slides injected by JS for infinite loop clone technique -->
           </div>
         </div>
-
         <button class="carousel-btn prev" id="prevBtn" aria-label="Previous">&#8592;</button>
         <button class="carousel-btn next" id="nextBtn" aria-label="Next">&#8594;</button>
       </div>
@@ -234,53 +162,132 @@
   </div>
 
   <script>
+    const slides = [
+      { src: "images/travel/Barcelona__Spain.jpg",     label: "Barcelona, Spain" },
+      { src: "images/travel/Budapest__Hungary.jpg",    label: "Budapest, Hungary" },
+      { src: "images/travel/Copenhagen__Denmark.jpg",  label: "Copenhagen, Denmark" },
+      { src: "images/travel/Florence__Italy.jpg",      label: "Florence, Italy" },
+      { src: "images/travel/Genoa_Nervi__Italy.jpg",   label: "Genoa Nervi, Italy" },
+      { src: "images/travel/Grasse__France.jpg",       label: "Grasse, France" },
+      { src: "images/travel/Gstaad__Switzerland.jpg",  label: "Gstaad, Switzerland" },
+      { src: "images/travel/Milan__Italy.jpg",         label: "Milan, Italy" },
+      { src: "images/travel/Mougin__France.jpg",       label: "Mougins, France" },
+      { src: "images/travel/Rome__Italy.jpg",          label: "Rome, Italy" },
+      { src: "images/travel/San_Juan__Puerto_Rico.jpg",label: "San Juan, Puerto Rico" },
+      { src: "images/travel/Split__Croatia.jpg",       label: "Split, Croatia" },
+      { src: "images/travel/Tehran__Iran.jpg",         label: "Tehran, Iran" },
+      { src: "images/travel/Vienna__Austria.jpg",      label: "Vienna, Austria" },
+    ];
+
+    const total = slides.length;
     const track = document.getElementById('track');
-    const slides = track.querySelectorAll('.carousel-slide');
     const dotsContainer = document.getElementById('dots');
     const counter = document.getElementById('counter');
-    const total = slides.length;
+    const DURATION = '0.45s cubic-bezier(0.4, 0, 0.2, 1)';
+
+    // Build: [clone of last] + [all slides] + [clone of first]
+    function makeSlide(data) {
+      const div = document.createElement('div');
+      div.className = 'carousel-slide';
+      div.innerHTML = `
+        <img src="${data.src}" alt="${data.label}" />
+        <div class="carousel-caption">
+          <div class="carousel-caption-text">${data.label}</div>
+        </div>`;
+      return div;
+    }
+
+    track.appendChild(makeSlide(slides[total - 1])); // clone of last
+    slides.forEach(s => track.appendChild(makeSlide(s)));
+    track.appendChild(makeSlide(slides[0]));          // clone of first
+
+    // current index in the real slides (0-based); in DOM that's position index+1
     let current = 0;
+    let isTransitioning = false;
 
     // Build dots
     slides.forEach((_, i) => {
       const dot = document.createElement('button');
-      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.className = 'carousel-dot';
       dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
-      dot.addEventListener('click', () => goTo(i));
+      dot.addEventListener('click', () => { if (!isTransitioning) goTo(i); });
       dotsContainer.appendChild(dot);
     });
 
-    function updateUI() {
-      track.style.transform = `translateX(-${current * 100}%)`;
+    function setPosition(index, animate) {
+      track.style.transition = animate ? `transform ${DURATION}` : 'none';
+      track.style.transform = `translateX(-${(index + 1) * 100}%)`;
+    }
+
+    function updateDots() {
       dotsContainer.querySelectorAll('.carousel-dot').forEach((d, i) => {
         d.classList.toggle('active', i === current);
       });
       counter.textContent = `${current + 1} / ${total}`;
     }
 
-    function goTo(n) {
-      current = (n + total) % total;
-      updateUI();
+    function goTo(index, animate = true) {
+      current = index;
+      setPosition(current, animate);
+      updateDots();
     }
 
-    document.getElementById('prevBtn').addEventListener('click', () => goTo(current - 1));
-    document.getElementById('nextBtn').addEventListener('click', () => goTo(current + 1));
+    function next() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      const next = current + 1;
+      setPosition(next, true);
+      // After transition, if we landed on the clone of first, silently jump to real first
+      track.addEventListener('transitionend', function handler() {
+        track.removeEventListener('transitionend', handler);
+        if (next >= total) {
+          current = 0;
+          setPosition(current, false);
+        } else {
+          current = next;
+        }
+        updateDots();
+        isTransitioning = false;
+      });
+    }
 
-    // Keyboard navigation
+    function prev() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      const prev = current - 1;
+      setPosition(prev, true);
+      track.addEventListener('transitionend', function handler() {
+        track.removeEventListener('transitionend', handler);
+        if (prev < 0) {
+          current = total - 1;
+          setPosition(current, false);
+        } else {
+          current = prev;
+        }
+        updateDots();
+        isTransitioning = false;
+      });
+    }
+
+    document.getElementById('nextBtn').addEventListener('click', next);
+    document.getElementById('prevBtn').addEventListener('click', prev);
+
     document.addEventListener('keydown', e => {
-      if (e.key === 'ArrowLeft') goTo(current - 1);
-      if (e.key === 'ArrowRight') goTo(current + 1);
+      if (e.key === 'ArrowLeft') prev();
+      if (e.key === 'ArrowRight') next();
     });
 
-    // Touch/swipe support
+    // Touch / swipe
     let startX = 0;
     track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
     track.addEventListener('touchend', e => {
       const diff = startX - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+      if (Math.abs(diff) > 40) diff > 0 ? next() : prev();
     });
 
-    updateUI();
+    // Init
+    setPosition(current, false);
+    updateDots();
   </script>
 </body>
 </html>
