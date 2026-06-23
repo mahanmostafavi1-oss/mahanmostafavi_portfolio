@@ -11,6 +11,27 @@
   <script src="main.js" defer></script>
 </head>
 <body>
+
+  <header class="mobile-header">
+    <a href="index.html" class="mobile-header-name">Mahan<br>Mostafavi</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="about.html" class="mobile-nav-item">About</a>
+    <a href="writing.html" class="mobile-nav-item">Writing</a>
+    <a href="projects.html" class="mobile-nav-item">Projects</a>
+    <a href="other.html" class="mobile-nav-item">Other</a>
+    <div class="mobile-nav-sub">
+      <a href="books.html">Books</a>
+      <a href="fragrances.html">Fragrances</a>
+      <a href="places.html">Places</a>
+      <a href="shows.html">Shows</a>
+    </div>
+  </nav>
+
   <div class="inner-layout">
     <aside class="sidebar">
       <a href="index.html" class="sidebar-home">Mahan<br>Mostafavi</a>
@@ -19,7 +40,7 @@
         <li><a href="writing.html">Writing</a></li>
         <li><a href="projects.html">Projects</a></li>
         <li class="sidebar-dropdown">
-          <a href="other.html" class="sidebar-dropdown-toggle">Other</a>
+          <a href="other.html">Other</a>
           <ul class="sidebar-submenu">
             <li><a href="books.html">Books</a></li>
             <li><a href="fragrances.html">Fragrances</a></li>
@@ -29,24 +50,30 @@
         </li>
       </ul>
     </aside>
+
     <main class="inner-content">
       <p class="section-eyebrow">Other</p>
 
-      <div class="home-links">
-        <a href="books.html" class="home-link-item">
-          <span class="home-link-label">Books</span>
+      <div class="other-grid">
+        <a href="books.html" class="other-card">
+          <span class="other-card-label">Books</span>
+          <span class="other-card-arrow">→</span>
         </a>
-        <a href="fragrances.html" class="home-link-item">
-          <span class="home-link-label">Fragrances</span>
+        <a href="fragrances.html" class="other-card">
+          <span class="other-card-label">Fragrances</span>
+          <span class="other-card-arrow">→</span>
         </a>
-        <a href="places.html" class="home-link-item">
-          <span class="home-link-label">Places</span>
+        <a href="places.html" class="other-card">
+          <span class="other-card-label">Places</span>
+          <span class="other-card-arrow">→</span>
         </a>
-        <a href="shows.html" class="home-link-item">
-          <span class="home-link-label">Shows</span>
+        <a href="shows.html" class="other-card">
+          <span class="other-card-label">Shows</span>
+          <span class="other-card-arrow">→</span>
         </a>
       </div>
     </main>
   </div>
+
 </body>
 </html>

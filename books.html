@@ -9,15 +9,29 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <script src="main.js" defer></script>
-  <style>
-    .img-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .img-card { display: flex; flex-direction: column; gap: 8px; }
-    .img-card img { width: 100%; aspect-ratio: 2/3; object-fit: cover; border-radius: 3px; display: block; background: var(--border); }
-    .img-card-label { font-size: 0.72rem; color: var(--fg-muted); text-align: center; line-height: 1.3; }
-    @media (max-width: 600px) { .img-grid { grid-template-columns: repeat(2, 1fr); } }
-  </style>
 </head>
 <body>
+
+  <header class="mobile-header">
+    <a href="index.html" class="mobile-header-name">Mahan<br>Mostafavi</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="about.html" class="mobile-nav-item">About</a>
+    <a href="writing.html" class="mobile-nav-item">Writing</a>
+    <a href="projects.html" class="mobile-nav-item">Projects</a>
+    <a href="other.html" class="mobile-nav-item">Other</a>
+    <div class="mobile-nav-sub">
+      <a href="books.html">Books</a>
+      <a href="fragrances.html">Fragrances</a>
+      <a href="places.html">Places</a>
+      <a href="shows.html">Shows</a>
+    </div>
+  </nav>
+
   <div class="inner-layout">
     <aside class="sidebar">
       <a href="index.html" class="sidebar-home">Mahan<br>Mostafavi</a>
@@ -26,7 +40,7 @@
         <li><a href="writing.html">Writing</a></li>
         <li><a href="projects.html">Projects</a></li>
         <li class="sidebar-dropdown">
-          <a href="other.html" class="sidebar-dropdown-toggle">Other</a>
+          <a href="other.html">Other</a>
           <ul class="sidebar-submenu">
             <li><a href="books.html">Books</a></li>
             <li><a href="fragrances.html">Fragrances</a></li>
@@ -36,9 +50,11 @@
         </li>
       </ul>
     </aside>
+
     <main class="inner-content">
       <p class="section-eyebrow">Other</p>
       <h1 class="section-title">Books</h1>
+
       <div class="img-grid">
         <div class="img-card">
           <img src="images/books/hour-between-dog-wolf.jpg" alt="The Hour Between Dog and Wolf" />
@@ -55,5 +71,6 @@
       </div>
     </main>
   </div>
+
 </body>
 </html>

@@ -9,68 +9,28 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <script src="main.js" defer></script>
-  <style>
-    .writing-item {
-      border-top: 1px solid var(--border);
-      padding: 0;
-    }
-
-    .writing-item:last-child {
-      border-bottom: 1px solid var(--border);
-    }
-
-    .writing-header {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 10px;
-      padding: 22px 0;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .writing-title {
-      font-family: 'DM Serif Display', Georgia, serif;
-      font-size: 1.1rem;
-      white-space: nowrap;
-    }
-
-    .writing-toggle {
-      font-size: 0.78rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--fg-muted);
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 1px;
-      transition: color 0.2s, border-color 0.2s;
-    }
-
-    .writing-header:hover .writing-toggle {
-      color: var(--fg);
-      border-color: var(--fg);
-    }
-
-    .writing-embed {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .writing-embed.open {
-      max-height: 1100px;
-    }
-
-    .writing-embed iframe {
-      width: 100%;
-      height: 1000px;
-      border: none;
-      display: block;
-      border-radius: 3px;
-      margin-bottom: 24px;
-    }
-  </style>
 </head>
 <body>
+
+  <header class="mobile-header">
+    <a href="index.html" class="mobile-header-name">Mahan<br>Mostafavi</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="about.html" class="mobile-nav-item">About</a>
+    <a href="writing.html" class="mobile-nav-item">Writing</a>
+    <a href="projects.html" class="mobile-nav-item">Projects</a>
+    <a href="other.html" class="mobile-nav-item">Other</a>
+    <div class="mobile-nav-sub">
+      <a href="books.html">Books</a>
+      <a href="fragrances.html">Fragrances</a>
+      <a href="places.html">Places</a>
+      <a href="shows.html">Shows</a>
+    </div>
+  </nav>
 
   <div class="inner-layout">
     <aside class="sidebar">
@@ -80,7 +40,7 @@
         <li><a href="writing.html">Writing</a></li>
         <li><a href="projects.html">Projects</a></li>
         <li class="sidebar-dropdown">
-          <a href="other.html" class="sidebar-dropdown-toggle">Other</a>
+          <a href="other.html">Other</a>
           <ul class="sidebar-submenu">
             <li><a href="books.html">Books</a></li>
             <li><a href="fragrances.html">Fragrances</a></li>
@@ -95,7 +55,6 @@
       <p class="section-eyebrow">Writing</p>
 
       <ul class="writing-list">
-
         <li class="writing-item">
           <div class="writing-header" onclick="togglePDF(this, 'pdfs/good-vs-bad-interpretations.pdf')">
             <div class="writing-title">Good vs. Bad Interpretations</div>
@@ -125,7 +84,6 @@
             <iframe title="Political Theology"></iframe>
           </div>
         </li>
-
       </ul>
     </main>
   </div>
@@ -137,7 +95,6 @@
       const iframe = embed.querySelector('iframe');
       const isOpen = embed.classList.contains('open');
 
-      // Close all others first
       document.querySelectorAll('.writing-embed.open').forEach(el => {
         el.classList.remove('open');
         el.querySelector('iframe').src = '';
@@ -151,6 +108,5 @@
       }
     }
   </script>
-
 </body>
 </html>

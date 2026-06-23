@@ -9,126 +9,29 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <script src="main.js" defer></script>
-  <style>
-    .carousel-wrap {
-      position: relative;
-      width: 100%;
-      max-width: 100%;
-      user-select: none;
-      overflow: hidden;
-    }
-
-    .carousel-track-outer {
-      overflow: hidden;
-      border-radius: 4px;
-      width: 100%;
-      position: relative;
-    }
-
-    .carousel-track {
-      display: flex;
-      width: 100%;
-      will-change: transform;
-    }
-
-    .carousel-slide {
-      width: 100%;
-      min-width: 100%;
-      flex: 0 0 100%;
-      position: relative;
-    }
-
-    .carousel-slide img {
-      width: 100%;
-      height: 340px;
-      object-fit: cover;
-      display: block;
-      border-radius: 4px;
-    }
-
-    .carousel-caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 48px 24px 20px;
-      background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%);
-      border-radius: 0 0 4px 4px;
-      pointer-events: none;
-    }
-
-    .carousel-caption-text {
-      font-family: 'DM Serif Display', Georgia, serif;
-      font-size: 1.2rem;
-      color: #ffffff;
-      letter-spacing: 0.02em;
-    }
-
-    .carousel-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 10;
-      color: var(--fg);
-      font-size: 1rem;
-      transition: border-color 0.2s, color 0.2s;
-      opacity: 0.9;
-    }
-
-    .carousel-btn:hover { border-color: var(--fg); opacity: 1; }
-    .carousel-btn.prev { left: 12px; }
-    .carousel-btn.next { right: 12px; }
-
-    .carousel-dots {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 16px;
-      flex-wrap: wrap;
-    }
-
-    .carousel-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--border);
-      cursor: pointer;
-      transition: background 0.2s, transform 0.2s;
-      border: none;
-      padding: 0;
-    }
-
-    .carousel-dot.active {
-      background: var(--accent);
-      transform: scale(1.3);
-    }
-
-    .carousel-counter {
-      text-align: center;
-      margin-top: 10px;
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--fg-muted);
-    }
-
-    @media (max-width: 600px) {
-      .carousel-slide img { height: 220px; }
-      .carousel-btn.prev { left: -12px; }
-      .carousel-btn.next { right: -12px; }
-    }
-  </style>
 </head>
 <body>
+
+  <header class="mobile-header">
+    <a href="index.html" class="mobile-header-name">Mahan<br>Mostafavi</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="about.html" class="mobile-nav-item">About</a>
+    <a href="writing.html" class="mobile-nav-item">Writing</a>
+    <a href="projects.html" class="mobile-nav-item">Projects</a>
+    <a href="other.html" class="mobile-nav-item">Other</a>
+    <div class="mobile-nav-sub">
+      <a href="books.html">Books</a>
+      <a href="fragrances.html">Fragrances</a>
+      <a href="places.html">Places</a>
+      <a href="shows.html">Shows</a>
+    </div>
+  </nav>
+
   <div class="inner-layout">
     <aside class="sidebar">
       <a href="index.html" class="sidebar-home">Mahan<br>Mostafavi</a>
@@ -137,7 +40,7 @@
         <li><a href="writing.html">Writing</a></li>
         <li><a href="projects.html">Projects</a></li>
         <li class="sidebar-dropdown">
-          <a href="other.html" class="sidebar-dropdown-toggle">Other</a>
+          <a href="other.html">Other</a>
           <ul class="sidebar-submenu">
             <li><a href="books.html">Books</a></li>
             <li><a href="fragrances.html">Fragrances</a></li>
@@ -154,9 +57,7 @@
 
       <div class="carousel-wrap">
         <div class="carousel-track-outer">
-          <div class="carousel-track" id="track">
-            <!-- slides injected by JS for infinite loop clone technique -->
-          </div>
+          <div class="carousel-track" id="track"></div>
         </div>
         <button class="carousel-btn prev" id="prevBtn" aria-label="Previous">&#8592;</button>
         <button class="carousel-btn next" id="nextBtn" aria-label="Next">&#8594;</button>
@@ -169,20 +70,20 @@
 
   <script>
     const slides = [
-      { src: "images/travel/Barcelona__Spain.jpg",     label: "Barcelona, Spain" },
-      { src: "images/travel/Budapest__Hungary.jpg",    label: "Budapest, Hungary" },
-      { src: "images/travel/Copenhagen__Denmark.jpg",  label: "Copenhagen, Denmark" },
-      { src: "images/travel/Florence__Italy.jpg",      label: "Florence, Italy" },
-      { src: "images/travel/Genoa_Nervi__Italy.jpg",   label: "Genoa Nervi, Italy" },
-      { src: "images/travel/Grasse__France.jpg",       label: "Grasse, France" },
-      { src: "images/travel/Gstaad__Switzerland.jpg",  label: "Gstaad, Switzerland" },
-      { src: "images/travel/Milan__Italy.jpg",         label: "Milan, Italy" },
-      { src: "images/travel/Mougin__France.jpg",       label: "Mougins, France" },
-      { src: "images/travel/Rome__Italy.jpg",          label: "Rome, Italy" },
-      { src: "images/travel/San_Juan__Puerto_Rico.jpg",label: "San Juan, Puerto Rico" },
-      { src: "images/travel/Split__Croatia.jpg",       label: "Split, Croatia" },
-      { src: "images/travel/Tehran__Iran.jpg",         label: "Tehran, Iran" },
-      { src: "images/travel/Vienna__Austria.jpg",      label: "Vienna, Austria" },
+      { src: "images/travel/Barcelona__Spain.jpg",      label: "Barcelona, Spain" },
+      { src: "images/travel/Budapest__Hungary.jpg",     label: "Budapest, Hungary" },
+      { src: "images/travel/Copenhagen__Denmark.jpg",   label: "Copenhagen, Denmark" },
+      { src: "images/travel/Florence__Italy.jpg",       label: "Florence, Italy" },
+      { src: "images/travel/Genoa_Nervi__Italy.jpg",    label: "Genoa Nervi, Italy" },
+      { src: "images/travel/Grasse__France.jpg",        label: "Grasse, France" },
+      { src: "images/travel/Gstaad__Switzerland.jpg",   label: "Gstaad, Switzerland" },
+      { src: "images/travel/Milan__Italy.jpg",          label: "Milan, Italy" },
+      { src: "images/travel/Mougin__France.jpg",        label: "Mougins, France" },
+      { src: "images/travel/Rome__Italy.jpg",           label: "Rome, Italy" },
+      { src: "images/travel/San_Juan__Puerto_Rico.jpg", label: "San Juan, Puerto Rico" },
+      { src: "images/travel/Split__Croatia.jpg",        label: "Split, Croatia" },
+      { src: "images/travel/Tehran__Iran.jpg",          label: "Tehran, Iran" },
+      { src: "images/travel/Vienna__Austria.jpg",       label: "Vienna, Austria" },
     ];
 
     const total = slides.length;
@@ -191,27 +92,19 @@
     const counter = document.getElementById('counter');
     const DURATION = '0.45s cubic-bezier(0.4, 0, 0.2, 1)';
 
-    // Build: [clone of last] + [all slides] + [clone of first]
     function makeSlide(data) {
       const div = document.createElement('div');
       div.className = 'carousel-slide';
-      div.innerHTML = `
-        <img src="${data.src}" alt="${data.label}" />
-        <div class="carousel-caption">
-          <div class="carousel-caption-text">${data.label}</div>
-        </div>`;
+      div.innerHTML = `<img src="${data.src}" alt="${data.label}" /><div class="carousel-caption"><div class="carousel-caption-text">${data.label}</div></div>`;
       return div;
     }
 
-    track.appendChild(makeSlide(slides[total - 1])); // clone of last
+    track.appendChild(makeSlide(slides[total - 1]));
     slides.forEach(s => track.appendChild(makeSlide(s)));
-    track.appendChild(makeSlide(slides[0]));          // clone of first
+    track.appendChild(makeSlide(slides[0]));
 
-    // current index in the real slides (0-based); in DOM that's position index+1
-    let current = 0;
-    let isTransitioning = false;
+    let current = 0, isTransitioning = false;
 
-    // Build dots
     slides.forEach((_, i) => {
       const dot = document.createElement('button');
       dot.className = 'carousel-dot';
@@ -226,9 +119,7 @@
     }
 
     function updateDots() {
-      dotsContainer.querySelectorAll('.carousel-dot').forEach((d, i) => {
-        d.classList.toggle('active', i === current);
-      });
+      dotsContainer.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === current));
       counter.textContent = `${current + 1} / ${total}`;
     }
 
@@ -241,17 +132,12 @@
     function next() {
       if (isTransitioning) return;
       isTransitioning = true;
-      const next = current + 1;
-      setPosition(next, true);
-      // After transition, if we landed on the clone of first, silently jump to real first
-      track.addEventListener('transitionend', function handler() {
-        track.removeEventListener('transitionend', handler);
-        if (next >= total) {
-          current = 0;
-          setPosition(current, false);
-        } else {
-          current = next;
-        }
+      const n = current + 1;
+      setPosition(n, true);
+      track.addEventListener('transitionend', function h() {
+        track.removeEventListener('transitionend', h);
+        current = n >= total ? 0 : n;
+        if (n >= total) setPosition(current, false);
         updateDots();
         isTransitioning = false;
       });
@@ -260,16 +146,12 @@
     function prev() {
       if (isTransitioning) return;
       isTransitioning = true;
-      const prev = current - 1;
-      setPosition(prev, true);
-      track.addEventListener('transitionend', function handler() {
-        track.removeEventListener('transitionend', handler);
-        if (prev < 0) {
-          current = total - 1;
-          setPosition(current, false);
-        } else {
-          current = prev;
-        }
+      const p = current - 1;
+      setPosition(p, true);
+      track.addEventListener('transitionend', function h() {
+        track.removeEventListener('transitionend', h);
+        current = p < 0 ? total - 1 : p;
+        if (p < 0) setPosition(current, false);
         updateDots();
         isTransitioning = false;
       });
@@ -277,21 +159,12 @@
 
     document.getElementById('nextBtn').addEventListener('click', next);
     document.getElementById('prevBtn').addEventListener('click', prev);
+    document.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') prev(); if (e.key === 'ArrowRight') next(); });
 
-    document.addEventListener('keydown', e => {
-      if (e.key === 'ArrowLeft') prev();
-      if (e.key === 'ArrowRight') next();
-    });
-
-    // Touch / swipe
     let startX = 0;
     track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
-    track.addEventListener('touchend', e => {
-      const diff = startX - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 40) diff > 0 ? next() : prev();
-    });
+    track.addEventListener('touchend', e => { const diff = startX - e.changedTouches[0].clientX; if (Math.abs(diff) > 40) diff > 0 ? next() : prev(); });
 
-    // Init
     setPosition(current, false);
     updateDots();
   </script>
