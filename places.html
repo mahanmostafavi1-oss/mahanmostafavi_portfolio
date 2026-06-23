@@ -9,6 +9,95 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <script src="main.js" defer></script>
+  <style>
+    /* ── Travel collage grid ── */
+    .travel-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 180px;
+      gap: 6px;
+      width: 100%;
+      max-width: none;
+    }
+
+    .travel-cell {
+      position: relative;
+      overflow: hidden;
+      border-radius: 3px;
+    }
+
+    .travel-cell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease, filter 0.3s ease;
+    }
+
+    .travel-cell:hover img {
+      transform: scale(1.04);
+      filter: brightness(0.72);
+    }
+
+    /* Location label on hover */
+    .travel-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 28px 14px 12px;
+      background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 100%);
+      color: #fff;
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      pointer-events: none;
+    }
+
+    .travel-cell:hover .travel-label {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Row spans — matching the collage layout */
+    /* Col 1: Barcelona tall (rows 1-2), Rome (row 3), Milan (row 4) */
+    .c-barcelona   { grid-column: 1; grid-row: 1 / 3; }
+    .c-rome        { grid-column: 1; grid-row: 3; }
+    .c-milan       { grid-column: 1; grid-row: 4; }
+
+    /* Col 2: Florence tall (rows 1-2), Genoa tall (rows 3-4) */
+    .c-florence    { grid-column: 2; grid-row: 1 / 3; }
+    .c-genoa       { grid-column: 2; grid-row: 3 / 5; }
+
+    /* Col 3: Copenhagen (row 1), Budapest tall (rows 2-3), Tehran (row 4) */
+    .c-copenhagen  { grid-column: 3; grid-row: 1; }
+    .c-budapest    { grid-column: 3; grid-row: 2 / 4; }
+    .c-tehran      { grid-column: 3; grid-row: 4; }
+
+    /* Col 4: San Juan (row 1), Mougins (row 2), Vienna (row 3), Grasse (row 4) */
+    .c-sanjuan     { grid-column: 4; grid-row: 1; }
+    .c-mougins     { grid-column: 4; grid-row: 2; }
+    .c-vienna      { grid-column: 4; grid-row: 3; }
+    .c-grasse      { grid-column: 4; grid-row: 4; }
+
+    /* Split and Gstaad don't fit the 4×4 — add a 5th row */
+    .c-split       { grid-column: 2; grid-row: 5; }
+    .c-gstaad      { grid-column: 3; grid-row: 5; }
+
+    @media (max-width: 660px) {
+      .travel-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 140px;
+      }
+      /* Reset all placements for mobile — let them flow naturally */
+      .travel-cell {
+        grid-column: auto !important;
+        grid-row: auto !important;
+      }
+      .travel-label { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
 
@@ -54,118 +143,81 @@
     <main class="inner-content">
       <h1 class="section-title">Places</h1>
 
-      <div class="carousel-wrap">
-        <div class="carousel-track-outer">
-          <div class="carousel-track" id="track"></div>
-        </div>
-        <button class="carousel-btn prev" id="prevBtn" aria-label="Previous">&#8592;</button>
-        <button class="carousel-btn next" id="nextBtn" aria-label="Next">&#8594;</button>
-      </div>
+      <div class="travel-grid">
 
-      <div class="carousel-dots" id="dots"></div>
-      <div class="carousel-counter" id="counter"></div>
+        <div class="travel-cell c-barcelona">
+          <img src="images/travel/Barcelona__Spain.jpg" alt="Barcelona, Spain" />
+          <div class="travel-label">Barcelona, Spain</div>
+        </div>
+
+        <div class="travel-cell c-florence">
+          <img src="images/travel/Florence__Italy.jpg" alt="Florence, Italy" />
+          <div class="travel-label">Florence, Italy</div>
+        </div>
+
+        <div class="travel-cell c-copenhagen">
+          <img src="images/travel/Copenhagen__Denmark.jpg" alt="Copenhagen, Denmark" />
+          <div class="travel-label">Copenhagen, Denmark</div>
+        </div>
+
+        <div class="travel-cell c-sanjuan">
+          <img src="images/travel/San_Juan__Puerto_Rico.jpg" alt="San Juan, Puerto Rico" />
+          <div class="travel-label">San Juan, Puerto Rico</div>
+        </div>
+
+        <div class="travel-cell c-budapest">
+          <img src="images/travel/Budapest__Hungary.jpg" alt="Budapest, Hungary" />
+          <div class="travel-label">Budapest, Hungary</div>
+        </div>
+
+        <div class="travel-cell c-mougins">
+          <img src="images/travel/Mougin__France.jpg" alt="Mougins, France" />
+          <div class="travel-label">Mougins, France</div>
+        </div>
+
+        <div class="travel-cell c-rome">
+          <img src="images/travel/Rome__Italy.jpg" alt="Rome, Italy" />
+          <div class="travel-label">Rome, Italy</div>
+        </div>
+
+        <div class="travel-cell c-genoa">
+          <img src="images/travel/Genoa_Nervi__Italy.jpg" alt="Genoa Nervi, Italy" />
+          <div class="travel-label">Genoa Nervi, Italy</div>
+        </div>
+
+        <div class="travel-cell c-tehran">
+          <img src="images/travel/Tehran__Iran.jpg" alt="Tehran, Iran" />
+          <div class="travel-label">Tehran, Iran</div>
+        </div>
+
+        <div class="travel-cell c-vienna">
+          <img src="images/travel/Vienna__Austria.jpg" alt="Vienna, Austria" />
+          <div class="travel-label">Vienna, Austria</div>
+        </div>
+
+        <div class="travel-cell c-milan">
+          <img src="images/travel/Milan__Italy.jpg" alt="Milan, Italy" />
+          <div class="travel-label">Milan, Italy</div>
+        </div>
+
+        <div class="travel-cell c-grasse">
+          <img src="images/travel/Grasse__France.jpg" alt="Grasse, France" />
+          <div class="travel-label">Grasse, France</div>
+        </div>
+
+        <div class="travel-cell c-split">
+          <img src="images/travel/Split__Croatia.jpg" alt="Split, Croatia" />
+          <div class="travel-label">Split, Croatia</div>
+        </div>
+
+        <div class="travel-cell c-gstaad">
+          <img src="images/travel/Gstaad__Switzerland.jpg" alt="Gstaad, Switzerland" />
+          <div class="travel-label">Gstaad, Switzerland</div>
+        </div>
+
+      </div>
     </main>
   </div>
 
-  <script>
-    const slides = [
-      { src: "images/travel/Barcelona__Spain.jpg",      label: "Barcelona, Spain" },
-      { src: "images/travel/Budapest__Hungary.jpg",     label: "Budapest, Hungary" },
-      { src: "images/travel/Copenhagen__Denmark.jpg",   label: "Copenhagen, Denmark" },
-      { src: "images/travel/Florence__Italy.jpg",       label: "Florence, Italy" },
-      { src: "images/travel/Genoa_Nervi__Italy.jpg",    label: "Genoa Nervi, Italy" },
-      { src: "images/travel/Grasse__France.jpg",        label: "Grasse, France" },
-      { src: "images/travel/Gstaad__Switzerland.jpg",   label: "Gstaad, Switzerland" },
-      { src: "images/travel/Milan__Italy.jpg",          label: "Milan, Italy" },
-      { src: "images/travel/Mougin__France.jpg",        label: "Mougins, France" },
-      { src: "images/travel/Rome__Italy.jpg",           label: "Rome, Italy" },
-      { src: "images/travel/San_Juan__Puerto_Rico.jpg", label: "San Juan, Puerto Rico" },
-      { src: "images/travel/Split__Croatia.jpg",        label: "Split, Croatia" },
-      { src: "images/travel/Tehran__Iran.jpg",          label: "Tehran, Iran" },
-      { src: "images/travel/Vienna__Austria.jpg",       label: "Vienna, Austria" },
-    ];
-
-    const total = slides.length;
-    const track = document.getElementById('track');
-    const dotsContainer = document.getElementById('dots');
-    const counter = document.getElementById('counter');
-    const DURATION = '0.45s cubic-bezier(0.4, 0, 0.2, 1)';
-
-    function makeSlide(data) {
-      const div = document.createElement('div');
-      div.className = 'carousel-slide';
-      div.innerHTML = `<img src="${data.src}" alt="${data.label}" /><div class="carousel-caption"><div class="carousel-caption-text">${data.label}</div></div>`;
-      return div;
-    }
-
-    track.appendChild(makeSlide(slides[total - 1]));
-    slides.forEach(s => track.appendChild(makeSlide(s)));
-    track.appendChild(makeSlide(slides[0]));
-
-    let current = 0, isTransitioning = false;
-
-    slides.forEach((_, i) => {
-      const dot = document.createElement('button');
-      dot.className = 'carousel-dot';
-      dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
-      dot.addEventListener('click', () => { if (!isTransitioning) goTo(i); });
-      dotsContainer.appendChild(dot);
-    });
-
-    function setPosition(index, animate) {
-      track.style.transition = animate ? `transform ${DURATION}` : 'none';
-      track.style.transform = `translateX(-${(index + 1) * 100}%)`;
-    }
-
-    function updateDots() {
-      dotsContainer.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === current));
-      counter.textContent = `${current + 1} / ${total}`;
-    }
-
-    function goTo(index, animate = true) {
-      current = index;
-      setPosition(current, animate);
-      updateDots();
-    }
-
-    function next() {
-      if (isTransitioning) return;
-      isTransitioning = true;
-      const n = current + 1;
-      setPosition(n, true);
-      track.addEventListener('transitionend', function h() {
-        track.removeEventListener('transitionend', h);
-        current = n >= total ? 0 : n;
-        if (n >= total) setPosition(current, false);
-        updateDots();
-        isTransitioning = false;
-      });
-    }
-
-    function prev() {
-      if (isTransitioning) return;
-      isTransitioning = true;
-      const p = current - 1;
-      setPosition(p, true);
-      track.addEventListener('transitionend', function h() {
-        track.removeEventListener('transitionend', h);
-        current = p < 0 ? total - 1 : p;
-        if (p < 0) setPosition(current, false);
-        updateDots();
-        isTransitioning = false;
-      });
-    }
-
-    document.getElementById('nextBtn').addEventListener('click', next);
-    document.getElementById('prevBtn').addEventListener('click', prev);
-    document.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') prev(); if (e.key === 'ArrowRight') next(); });
-
-    let startX = 0;
-    track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
-    track.addEventListener('touchend', e => { const diff = startX - e.changedTouches[0].clientX; if (Math.abs(diff) > 40) diff > 0 ? next() : prev(); });
-
-    setPosition(current, false);
-    updateDots();
-  </script>
 </body>
 </html>
