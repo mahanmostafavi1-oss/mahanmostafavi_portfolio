@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Mahan Mostafavi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="main.js" defer></script>
+  <style>
+    .poster-section { margin-top: 40px; }
+    .poster-block {
+      border: 1px solid var(--border);
+      padding: 28px;
+      border-radius: 4px;
+    }
+    .poster-img {
+      width: 100%;
+      border-radius: 3px;
+      display: block;
+      border: 1px solid var(--border);
+      transition: opacity 0.2s;
+      cursor: zoom-in;
+    }
+    .poster-img:hover { opacity: 0.92; }
+  </style>
+</head>
+<body>
+
+  <div class="inner-layout">
+    <aside class="sidebar">
+      <a href="index.html" class="sidebar-home">Mahan<br>Mostafavi</a>
+      <ul class="sidebar-nav">
+        <li><a href="about.html">About</a></li>
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li class="sidebar-dropdown">
+          <a href="other.html" class="sidebar-dropdown-toggle">Other</a>
+          <ul class="sidebar-submenu">
+            <li><a href="books.html">Books</a></li>
+            <li><a href="fragrances.html">Fragrances</a></li>
+            <li><a href="places.html">Places</a></li>
+            <li><a href="shows.html">Shows</a></li>
+          </ul>
+        </li>
+      </ul>
+    </aside>
+
+    <main class="inner-content">
+      <p class="section-eyebrow">Projects</p>
+      <h1 class="section-title">Work &amp; Builds</h1>
+      <p class="section-intro">Coding projects, research presentations, and initiatives I've contributed to.</p>
+
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <div class="project-type">Web / Game</div>
+          <div class="project-name">Soccer Stats Higher or Lower</div>
+          <div class="project-desc">A higher-or-lower web game built around player statistics. Uses a SQLite database populated with Kaggle datasets, built with VS Code and designed in Figma.</div>
+          <a href="#" class="project-link" target="_blank" rel="noopener">View project →</a>
+        </div>
+
+        <div class="project-card">
+          <div class="project-type">Initiative</div>
+          <div class="project-name">The Diane Fund</div>
+          <div class="project-desc">Co-founded a fundraising initiative that raised over $150K and coordinated 50+ volunteers. Managed outreach, logistics, and donor communications.</div>
+          <a href="#" class="project-link" target="_blank" rel="noopener">Learn more →</a>
+        </div>
+
+      </div>
+
+      <div class="poster-section">
+        <div class="poster-block">
+          <div class="project-type" style="margin-bottom: 10px;">Research / Poster</div>
+          <div class="project-name" style="font-family: 'DM Serif Display', Georgia, serif; font-size: 1.1rem; margin-bottom: 10px;">IRF5 Knockout Poster</div>
+          <div class="project-desc" style="font-size: 0.88rem; color: var(--fg-muted); line-height: 1.65; margin-bottom: 20px;">Visiting Research Scholar work at the Feinstein Institutes for Medical Research, Northwell Health. Investigated IRF5 Knockout impact on bone composition using mouse models, H&amp;E staining, ImageJ analysis, PCR, and cryo-method protocols.</div>
+          <a href="images/irf5-poster.jpg" target="_blank" rel="noopener">
+            <img src="images/irf5-poster.jpg" alt="IRF5 Knockout Poster" class="poster-img" />
+          </a>
+          <div style="margin-top: 12px;">
+            <a href="images/irf5-poster.jpg" class="project-link" target="_blank" rel="noopener">View full poster →</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+</body>
+</html>

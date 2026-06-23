@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fragrances — Mahan Mostafavi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="main.js" defer></script>
+  <style>
+    .frag-list {
+      list-style: none;
+      width: 100%;
+    }
+
+    .frag-item {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.95rem;
+      color: var(--fg);
+    }
+
+    .frag-item:first-child {
+      border-top: 1px solid var(--border);
+    }
+
+    .copy-btn-wrap {
+      margin-bottom: 32px;
+    }
+
+    .copy-btn {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 7px 16px;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--fg-muted);
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .copy-btn:hover { color: var(--fg); border-color: var(--fg); }
+    .copy-btn.copied { color: var(--accent); border-color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="inner-layout">
+    <aside class="sidebar">
+      <a href="index.html" class="sidebar-home">Mahan<br>Mostafavi</a>
+      <ul class="sidebar-nav">
+        <li><a href="about.html">About</a></li>
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li class="sidebar-dropdown">
+          <a href="other.html" class="sidebar-dropdown-toggle">Other</a>
+          <ul class="sidebar-submenu">
+            <li><a href="books.html">Books</a></li>
+            <li><a href="fragrances.html">Fragrances</a></li>
+            <li><a href="places.html">Places</a></li>
+            <li><a href="shows.html">Shows</a></li>
+          </ul>
+        </li>
+      </ul>
+    </aside>
+
+    <main class="inner-content">
+      <p class="section-eyebrow">Other</p>
+      <h1 class="section-title">Fragrances</h1>
+
+      <div class="copy-btn-wrap">
+        <button class="copy-btn" id="copyBtn" onclick="copyList()">Copy list</button>
+      </div>
+
+      <ul class="frag-list">
+        <li class="frag-item">Acqua dell'Elba Classica</li>
+        <li class="frag-item">Dior Homme</li>
+        <li class="frag-item">Le Labo Another 13</li>
+        <li class="frag-item">Le Labo Santal 33</li>
+        <li class="frag-item">Terre d'Hermès</li>
+      </ul>
+    </main>
+  </div>
+
+  <script>
+    function copyList() {
+      const list = `Acqua dell'Elba Classica
+Dior Homme
+Le Labo Another 13
+Le Labo Santal 33
+Terre d'Hermès`;
+
+      navigator.clipboard.writeText(list).then(() => {
+        const btn = document.getElementById('copyBtn');
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copy list';
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
