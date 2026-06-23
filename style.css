@@ -85,6 +85,7 @@ a { color: inherit; text-decoration: none; }
   min-height: 100vh;
 }
 
+
 /* ── Sidebar ── */
 .sidebar {
   width: var(--sidebar-w);
@@ -143,10 +144,16 @@ a { color: inherit; text-decoration: none; }
 
 /* ── Main content ── */
 .inner-content {
-  margin-left: var(--sidebar-w);
   flex: 1;
-  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 80px 48px 100px;
+}
+
+.inner-content > * {
+  width: 100%;
+  max-width: 620px;
 }
 
 /* ── Section headings ── */
