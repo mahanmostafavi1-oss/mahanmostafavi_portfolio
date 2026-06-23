@@ -9,6 +9,23 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <script src="main.js" defer></script>
+  <style>
+    .poster-section { margin-top: 40px; }
+    .poster-block {
+      border: 1px solid var(--border);
+      padding: 28px;
+      border-radius: 4px;
+    }
+    .poster-img {
+      width: 100%;
+      border-radius: 3px;
+      display: block;
+      border: 1px solid var(--border);
+      transition: opacity 0.2s;
+      cursor: zoom-in;
+    }
+    .poster-img:hover { opacity: 0.92; }
+  </style>
 </head>
 <body>
 
@@ -46,26 +63,26 @@
         </div>
 
         <div class="project-card">
-          <div class="project-type">Research / Poster</div>
-          <div class="project-name">IRF5 &amp; Bone Remodeling</div>
-          <div class="project-desc">Visiting Research Scholar work at the Feinstein Institutes. Investigated IRF5 regulation in bone remodeling using mouse models, PCR, electroporation, and isothermal assembly.</div>
-          <a href="#" class="project-link" target="_blank" rel="noopener">View poster →</a>
-        </div>
-
-        <div class="project-card">
           <div class="project-type">Initiative</div>
           <div class="project-name">The Diane Fund</div>
           <div class="project-desc">Co-founded a fundraising initiative that raised over $150K and coordinated 50+ volunteers. Managed outreach, logistics, and donor communications.</div>
           <a href="#" class="project-link" target="_blank" rel="noopener">Learn more →</a>
         </div>
 
-        <div class="project-card">
-          <div class="project-type">Add your next project</div>
-          <div class="project-name">Project Title</div>
-          <div class="project-desc">Brief description of what the project is, what it does, and any tools or methods involved. 2–3 sentences is ideal.</div>
-          <a href="#" class="project-link" target="_blank" rel="noopener">Link →</a>
-        </div>
+      </div>
 
+      <div class="poster-section">
+        <div class="poster-block">
+          <div class="project-type" style="margin-bottom: 10px;">Research / Poster</div>
+          <div class="project-name" style="font-family: 'DM Serif Display', Georgia, serif; font-size: 1.1rem; margin-bottom: 10px;">IRF5 Knockout Poster</div>
+          <div class="project-desc" style="font-size: 0.88rem; color: var(--fg-muted); line-height: 1.65; margin-bottom: 20px;">Visiting Research Scholar work at the Feinstein Institutes for Medical Research, Northwell Health. Investigated IRF5 Knockout impact on bone composition using mouse models, H&amp;E staining, ImageJ analysis, PCR, and cryo-method protocols.</div>
+          <a href="images/irf5-poster.jpg" target="_blank" rel="noopener">
+            <img src="images/irf5-poster.jpg" alt="IRF5 Knockout Poster" class="poster-img" />
+          </a>
+          <div style="margin-top: 12px;">
+            <a href="images/irf5-poster.jpg" class="project-link" target="_blank" rel="noopener">View full poster →</a>
+          </div>
+        </div>
       </div>
     </main>
   </div>
