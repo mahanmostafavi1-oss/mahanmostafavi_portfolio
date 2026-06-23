@@ -114,14 +114,14 @@ img { display: block; max-width: 100%; }
 .sidebar {
   width: var(--sidebar-w);
   flex-shrink: 0;
-  padding: 48px 48px 48px 40px;
+  padding: 48px 36px 48px 24px;
   position: fixed;
   top: 0;
   left: 0;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   gap: 36px;
   background: var(--bg);
   z-index: 100;
@@ -134,7 +134,7 @@ img { display: block; max-width: 100%; }
   transition: color var(--transition);
   line-height: 1.35;
   letter-spacing: 0.01em;
-  text-align: right;
+  text-align: left;
 }
 
 .sidebar-home:hover { color: var(--fg); }
@@ -144,7 +144,7 @@ img { display: block; max-width: 100%; }
   flex-direction: column;
   gap: 14px;
   list-style: none;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 .sidebar-nav a {
@@ -154,6 +154,7 @@ img { display: block; max-width: 100%; }
   color: var(--fg-muted);
   transition: color var(--transition);
   position: relative;
+  padding-left: 0;
 }
 
 .sidebar-nav a:hover { color: var(--fg); }
@@ -163,8 +164,8 @@ img { display: block; max-width: 100%; }
 .sidebar-nav a.active::before {
   content: '—';
   position: absolute;
-  right: calc(100% + 8px);
-  left: auto;
+  left: calc(100% + 8px);
+  right: auto;
   color: var(--accent);
   font-size: 0.65rem;
   top: 2px;
@@ -179,11 +180,11 @@ img { display: block; max-width: 100%; }
   overflow: hidden;
   transition: max-height 0.28s ease, opacity 0.22s ease;
   opacity: 0;
-  padding-right: 0;
+  padding-left: 12px;
   margin-top: 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 .sidebar-dropdown:hover .sidebar-submenu,
@@ -219,18 +220,21 @@ img { display: block; max-width: 100%; }
 
 /* ── Section headings ── */
 .section-eyebrow {
-  font-size: 0.7rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 10px;
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: var(--fg);
+  margin-bottom: 32px;
+  line-height: 1.05;
 }
 
 .section-title {
   font-family: 'DM Serif Display', Georgia, serif;
-  font-size: clamp(1.9rem, 4vw, 2.9rem);
-  line-height: 1.08;
-  margin-bottom: 14px;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin-bottom: 32px;
 }
 
 .section-intro {
@@ -252,8 +256,8 @@ img { display: block; max-width: 100%; }
    ABOUT
 ══════════════════════════════════════ */
 .about-bio {
-  font-size: 0.95rem;
-  line-height: 1.8;
+  font-size: 1.05rem;
+  line-height: 1.85;
   color: var(--fg);
   margin-bottom: 0;
   max-width: 340px;
